@@ -9,6 +9,9 @@ const prodConfg = {
   // file name of built file
   output: {
     filename: '[name].[contenthash].js',
+    // this is the path under s3 bucket we deploy our container app to
+    // eventually, the path of resource on the web page is: publicPath + filename
+    publicPath: '/container/latest/',
   },
   plugins: [
     new ModuleFederationPlugin({
