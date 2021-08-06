@@ -4,12 +4,18 @@ import ReactDOM from 'react-dom';
 import { createMemoryHistory } from 'history';
 import App from './App';
 
-const mount = (element) => {
+const mount = (element, options = {}) => {
   if (!element) {
     return 'Not found html element to render to';
   }
-  const history = createMemoryHistory();
-  ReactDOM.render(<App history={history} />, element);
+  const memoryHistory = createMemoryHistory();
+  const { onChildNagivated } = options;
+  // notify parent to update URL once the navigation happened
+  if (onChildNagivated) {
+    memoryHistory.listen(onChildNagivated);
+  }
+
+  ReactDOM.render(<App history={memoryHistory} />, element);
 };
 
 const devMarketingFeatures = document.getElementById('dev-marketing-feature');
