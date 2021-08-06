@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react';
+
+// Browser History for Navigation
 import { BrowserRouter } from 'react-router-dom';
 import {
   StylesProvider,

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+// Router is Memory History, it will provide navigation history for us to use but not the Browser History at all.
+import { Switch, Route, Router } from 'react-router-dom';
 import {
   StylesProvider,
   createGenerateClassName,
@@ -12,16 +13,16 @@ const generateClassName = createGenerateClassName({
   productionPrefix: 'ma',
 });
 
-export default () => {
+export default ({ history }) => {
   return (
     <Fragment>
       <StylesProvider generateClassName={generateClassName}>
-        <BrowserRouter>
+        <Router history={history}>
           <Switch>
             <Route exact path='/pricing' component={PricingPage}></Route>
             <Route path='/' component={LandingPage}></Route>
           </Switch>
-        </BrowserRouter>
+        </Router>
       </StylesProvider>
     </Fragment>
   );
