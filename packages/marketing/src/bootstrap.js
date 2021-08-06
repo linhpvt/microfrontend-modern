@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // we create a memory history and pass it down to App where the Router resides in. this will stop the BROWSER HISTORY and create a MEMORY HISTORY instead. we will sync the navigation over the entire application
 import { createMemoryHistory } from 'history';
+import { useHostNavigation } from './hooks';
 import App from './App';
 
 const mount = (element, options = {}) => {
@@ -9,13 +10,15 @@ const mount = (element, options = {}) => {
     return 'Not found html element to render to';
   }
   const memoryHistory = createMemoryHistory();
-  const { onChildNagivated } = options;
-  // notify parent to update URL once the navigation happened
-  if (onChildNagivated) {
-    memoryHistory.listen(onChildNagivated);
+  const { onRemoteNagivated } = options;
+  // notify Host to update URL once the navigation happened
+  if (onRemoteNagivated) {
+    memoryHistory.listen(onRemoteNagivated);
   }
 
   ReactDOM.render(<App history={memoryHistory} />, element);
+  // host uses the inteface to inform remote the navigation has been completed.
+  return useHostNavigation(memoryHistory);
 };
 
 const devMarketingFeatures = document.getElementById('dev-marketing-feature');

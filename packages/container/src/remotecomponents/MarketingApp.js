@@ -1,11 +1,17 @@
 import React, { useRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { mount as mountMarketing } from 'marketing/MarketingApp';
-import { useChildNavigation } from '../hooks';
+import { useRemoteNavigation } from '../hooks';
 export default () => {
   const ref = useRef(null);
-  const onChildNagivated = useChildNavigation();
+  const browserHistory = useHistory();
+  const { onRemoteNagivated } = useRemoteNavigation();
+  // console.log('onRemoteNagivated', onRemoteNagivated);
   useEffect(() => {
-    mountMarketing(ref.current, { onChildNagivated });
+    const { onHostNavigated } = mountMarketing(ref.current, {
+      onRemoteNagivated,
+    });
+    browserHistory.listen(onHostNavigated);
   }, []);
   return <div ref={ref} />;
 };

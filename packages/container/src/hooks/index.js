@@ -1,1 +1,1 @@
-export { useChildNavigation } from './useChildNavigation';
+export { useRemoteNavigation } from './useRemoteNavigation';
