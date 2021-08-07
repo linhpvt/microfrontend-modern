@@ -9,13 +9,19 @@ export const mount = (element, options = {}) => {
   if (!element) {
     return 'Not found html element to render to';
   }
-  const { onRemoteNagivated, defaultHistory } = options;
-
+  const { onRemoteNagivated, defaultHistory, initialPath } = options;
   // ensure navigation works in isolation normally
-  const memoryHistory = defaultHistory || createMemoryHistory();
+  const memoryHistory =
+    defaultHistory ||
+    createMemoryHistory({
+      // set initial path = current path on URL.
+      // by default initialEntries = ['/']. It doesn't contain one of paths ['/auth/signin', '/auth/signup] in Remote auth project
+      initialEntries: [initialPath],
+    });
 
   // notify Host to update URL once the navigation happened
   if (onRemoteNagivated) {
+    // the listen function only gets called once the path changed
     memoryHistory.listen(onRemoteNagivated);
   }
 

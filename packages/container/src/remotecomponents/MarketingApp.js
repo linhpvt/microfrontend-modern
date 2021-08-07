@@ -10,6 +10,7 @@ export default () => {
   useEffect(() => {
     const { onHostNavigated } = mountMarketing(ref.current, {
       onRemoteNagivated,
+      initialPath: browserHistory.location.pathname,
     });
     browserHistory.listen(onHostNavigated);
   }, []);

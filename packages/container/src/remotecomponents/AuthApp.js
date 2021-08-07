@@ -6,10 +6,10 @@ export default () => {
   const ref = useRef(null);
   const browserHistory = useHistory();
   const { onRemoteNagivated } = useRemoteNavigation();
-  // console.log('onRemoteNagivated', onRemoteNagivated);
   useEffect(() => {
     const { onHostNavigated } = mountAuth(ref.current, {
       onRemoteNagivated,
+      initialPath: browserHistory.location.pathname,
     });
     browserHistory.listen(onHostNavigated);
   }, []);
