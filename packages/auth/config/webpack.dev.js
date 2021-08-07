@@ -9,16 +9,16 @@ const commonConfig = require('./webpack.common');
 const devConfig = {
   mode: 'development',
   devServer: {
-    clientLogLevel: 'info',
-    port: 8081,
+    clientLogLevel: 'error',
+    port: 8082,
     historyApiFallback: true,
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'marketing',
+      name: 'auth',
       filename: 'remoteEntry.js',
       exposes: {
-        './MarketingApp': './src/bootstrap',
+        './AuthApp': './src/bootstrap',
       },
       // some of specific libs
       // shared: ['react', 'react-dom'],
