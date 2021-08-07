@@ -5,12 +5,16 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const pkgDependencies = require('../package.json');
 
 const commonConfig = require('./webpack.common');
-
+const DEV_PORT = 8082;
 const devConfig = {
   mode: 'development',
+  output: {
+    // tell webpack to package where we load resources such as js files, css files
+    publicPath: `http://localhost:${DEV_PORT}/`,
+  },
   devServer: {
     clientLogLevel: 'error',
-    port: 8082,
+    port: DEV_PORT,
     historyApiFallback: true,
   },
   plugins: [
