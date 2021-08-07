@@ -5,7 +5,7 @@ import { createMemoryHistory, createBrowserHistory } from 'history';
 import { useHostNavigation } from './hooks';
 import App from './App';
 
-const mount = (element, options = {}) => {
+export const mount = (element, options = {}) => {
   if (!element) {
     return 'Not found html element to render to';
   }
@@ -29,5 +29,3 @@ const env = process.env.NODE_ENV || 'development';
 if (env === 'development' && devAuthFeatures) {
   mount(devAuthFeatures, { defaultHistory: createBrowserHistory() });
 }
-
-export { mount };

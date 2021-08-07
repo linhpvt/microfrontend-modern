@@ -16,7 +16,6 @@ const generateClassName = createGenerateClassName({
 export default ({ history }) => {
   return (
     <Fragment>
-      <h1>Hello from authentication</h1>
       <StylesProvider generateClassName={generateClassName}>
         <Router history={history}>
           <Switch>

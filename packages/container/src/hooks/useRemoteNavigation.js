@@ -7,6 +7,7 @@ export const useRemoteNavigation = () => {
   const browserHistory = useHistory();
   const onRemoteNagivated = useCallback(
     (evtNavigation) => {
+      console.log(evtNavigation);
       const { pathname: nextPathname } = evtNavigation;
       const { location: { pathname: currentPathname } = {} } = browserHistory;
 
