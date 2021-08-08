@@ -1,0 +1,1 @@
+export { remoteInformAuthentication } from './remoteInformAuthentication';

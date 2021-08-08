@@ -9,7 +9,7 @@ export const mount = (element, options = {}) => {
   if (!element) {
     return 'Not found html element to render to';
   }
-  const { onRemoteNagivated, defaultHistory, initialPath } = options;
+  const { onRemoteNagivated, defaultHistory, initialPath, onSignIn } = options;
   // ensure navigation works in isolation normally
   const memoryHistory =
     defaultHistory ||
@@ -25,7 +25,7 @@ export const mount = (element, options = {}) => {
     memoryHistory.listen(onRemoteNagivated);
   }
 
-  ReactDOM.render(<App history={memoryHistory} />, element);
+  ReactDOM.render(<App history={memoryHistory} onSignIn={onSignIn} />, element);
   // host uses the inteface to inform remote the navigation has been completed.
   return useHostNavigation(memoryHistory);
 };
