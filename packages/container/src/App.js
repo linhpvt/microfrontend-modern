@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core/styles';
 
 import Header from './localcomponents/Header';
+import ProgressBar from './localcomponents/ProgressBar';
 // import MarketingApp from './remotecomponents/MarketingApp';
 // import AuthApp from './remotecomponents/AuthApp';
 const MarketingLazy = lazy(() => import('./remotecomponents/MarketingApp'));
@@ -27,7 +28,7 @@ export default () => {
             <Route path='/auth' component={AuthApp} />
             <Route path='/' component={MarketingApp} />
           </Switch> */}
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={ProgressBar}>
             <Switch>
               <Route path='/auth' component={AuthLazy} />
               <Route path='/' component={MarketingLazy} />
