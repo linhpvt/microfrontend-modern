@@ -3,9 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { mount as mountAuth } from 'auth/AuthApp';
 import { useRemoteNavigation } from '../hooks';
 
-import { remoteInformAuthentication } from '../communication';
-
-export default () => {
+export default ({ userInfo, notifyAuthentication }) => {
   const ref = useRef(null);
   const browserHistory = useHistory();
   const { onRemoteNagivated } = useRemoteNavigation();
@@ -13,7 +11,7 @@ export default () => {
     const { onHostNavigated } = mountAuth(ref.current, {
       onRemoteNagivated,
       initialPath: browserHistory.location.pathname,
-      onSignIn: remoteInformAuthentication,
+      onSignIn: notifyAuthentication,
     });
     browserHistory.listen(onHostNavigated);
   }, []);

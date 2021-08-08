@@ -1,1 +1,0 @@
-export { remoteInformAuthentication } from './remoteInformAuthentication';

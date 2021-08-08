@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { mount as mountMarketing } from 'marketing/MarketingApp';
 import { useRemoteNavigation } from '../hooks';
-export default () => {
+export default ({ userInfo }) => {
   const ref = useRef(null);
   const browserHistory = useHistory();
   const { onRemoteNagivated } = useRemoteNavigation();

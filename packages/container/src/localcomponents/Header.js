@@ -54,42 +54,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({ signedIn, onSignOut }) {
+export default function Header({ userInfo, notifyAuthentication }) {
   const classes = useStyles();
 
   const onClick = () => {
-    if (signedIn && onSignOut) {
-      onSignOut();
+    // do something for logging out
+
+    if (userInfo && notifyAuthentication) {
+      notifyAuthentication({ status: 0, user: null });
     }
   };
 
   return (
     <React.Fragment>
       <AppBar
-        position="static"
-        color="default"
+        position='static'
+        color='default'
         elevation={0}
         className={classes.appBar}
       >
         <Toolbar className={classes.toolbar}>
           <Typography
-            variant="h6"
-            color="inherit"
+            variant='h6'
+            color='inherit'
             noWrap
             component={RouterLink}
-            to="/"
+            to='/'
           >
             App
           </Typography>
           <Button
-            color="primary"
-            variant="outlined"
+            color='primary'
+            variant='outlined'
             className={classes.link}
             component={RouterLink}
-            to={signedIn ? '/' : '/auth/signin'}
+            to={userInfo ? '/' : '/auth/signin'}
             onClick={onClick}
           >
-            {signedIn ? 'Logout' : 'Login'}
+            {userInfo ? 'Logout' : 'Login'}
           </Button>
         </Toolbar>
       </AppBar>
