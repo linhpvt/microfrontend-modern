@@ -56,7 +56,10 @@ export default function SignIn({ onSignIn }) {
     // do something with the sign
 
     if (onSignIn) {
-      onSignIn({ status: 0, user: { id: 1, name: 'Down' } });
+      onSignIn({
+        status: 0,
+        user: { id: 1, name: 'Down Jone', email: 'linhpvt@gmail.com' },
+      });
     }
   };
 

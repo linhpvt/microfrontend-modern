@@ -21,6 +21,7 @@ const prodConfg = {
         // all files will be deployed under /marketing/lastest folder in S3 bucket
         marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
         auth: `auth@${domain}/auth/latest/remoteEntry.js`,
+        dashboard: `dashboard@${domain}/auth/latest/remoteEntry.js`,
       },
       shared: pkgDependencies.dependencies,
     }),
